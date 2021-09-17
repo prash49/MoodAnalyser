@@ -13,16 +13,24 @@ public class MoodAnalyserTest {
     public void givenMessage_WhenProper_ShouldReturnSad() throws MoodAnalysisException {
         MoodAnalyser moodanalyser = new MoodAnalyser();
         moodanalyser.setMessage("I am in Sad Mood");
-        String actualResult = moodanalyser.analyseMood();
-        Assert.assertEquals("Sad", actualResult);
+        try {
+            String actualResult = moodanalyser.analyseMood();
+            Assert.assertEquals("Sad", actualResult);
+        } catch (MoodAnalysisException e) {
+            e.printStackTrace();
+        }
     }
 
     @Test
     public void givenMessage_WhenProper_ShouldReturnHappy() throws MoodAnalysisException {
         MoodAnalyser moodanalyser = new MoodAnalyser();
         moodanalyser.setMessage("I am in happy Mood");
-        String actualResult = moodanalyser.analyseMood();
-        Assert.assertEquals("Happy", actualResult);
+        try {
+            String actualResult = moodanalyser.analyseMood();
+            Assert.assertEquals("Happy", actualResult);
+        } catch (MoodAnalysisException e) {
+            e.printStackTrace();
+        }
     }
 
     @Test
