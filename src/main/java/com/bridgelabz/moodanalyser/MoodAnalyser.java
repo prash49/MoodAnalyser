@@ -15,7 +15,6 @@ public class MoodAnalyser {
 
     }
 
-
     public String getMessage() {
         return message;
     }
@@ -32,5 +31,4 @@ public class MoodAnalyser {
         }
         return "Happy";
     }
-
 }
