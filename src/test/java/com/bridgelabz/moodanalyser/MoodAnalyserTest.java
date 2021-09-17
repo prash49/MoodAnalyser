@@ -31,7 +31,7 @@ public class MoodAnalyserTest {
         moodanalyser.setMessage(null);
         try {
             String actualResult = moodanalyser.analyseMood();
-            Assert.assertEquals("Entered Invalid Mood ", actualResult);
+            Assert.assertEquals("Null Mood ", actualResult);
         } catch (MoodAnalysisException e) {
             e.printStackTrace();
         }
