@@ -10,7 +10,7 @@ import org.junit.Test;
  */
 public class MoodAnalyserTest {
     @Test
-    public void givenMessage_WhenProper_ShouldReturnSad() {
+    public void givenMessage_WhenProper_ShouldReturnSad() throws MoodAnalysisException {
         MoodAnalyser moodanalyser = new MoodAnalyser();
         moodanalyser.setMessage("I am in Sad Mood");
         String actualResult = moodanalyser.analyseMood();
@@ -18,7 +18,7 @@ public class MoodAnalyserTest {
     }
 
     @Test
-    public void givenMessage_WhenProper_ShouldReturnHappy() {
+    public void givenMessage_WhenProper_ShouldReturnHappy() throws MoodAnalysisException {
         MoodAnalyser moodanalyser = new MoodAnalyser();
         moodanalyser.setMessage("I am in happy Mood");
         String actualResult = moodanalyser.analyseMood();
@@ -26,11 +26,14 @@ public class MoodAnalyserTest {
     }
 
     @Test
-    public void givenMessage_Null_ShouldReturnHappy() {
+    public void givenMessage_Null_ShouldReturnMessage() throws MoodAnalysisException {
         MoodAnalyser moodanalyser = new MoodAnalyser();
         moodanalyser.setMessage(null);
-        String actualResult = moodanalyser.analyseMood();
-        Assert.assertEquals("Happy", actualResult);
+        try {
+            String actualResult = moodanalyser.analyseMood();
+            Assert.assertEquals("Entered Invalid Mood ", actualResult);
+        } catch (MoodAnalysisException e) {
+            e.printStackTrace();
+        }
     }
-
 }

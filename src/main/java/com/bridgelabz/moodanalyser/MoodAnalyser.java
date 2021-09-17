@@ -9,7 +9,7 @@ public class MoodAnalyser {
     public MoodAnalyser() {
     }
 
-    public MoodAnalyser(String message) {
+    public MoodAnalyser(String message) throws MoodAnalysisException {
         this.message = message;
         analyseMood();
 
@@ -23,16 +23,16 @@ public class MoodAnalyser {
         this.message = message;
     }
 
-    public static String analyseMood() {
+    public static String analyseMood() throws MoodAnalysisException {
         try {
             if (message.toLowerCase().contains("sad")) {
                 return "Sad";
             } else {
                 return "Happy";
             }
-
         } catch (NullPointerException e) {
-            return "Happy";
+            throw new MoodAnalysisException("Entered Invalid mood");
         }
+
     }
 }
