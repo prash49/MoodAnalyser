@@ -2,6 +2,7 @@ package com.bridgelabz.moodanalyser;
 
 import static org.junit.Assert.assertTrue;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 /**
@@ -9,12 +10,10 @@ import org.junit.Test;
  */
 public class MoodAnalyserTest
 {
-    /**
-     * Rigorous Test :-)
-     */
     @Test
-    public void shouldAnswerWithTrue()
-    {
-        assertTrue( true );
+    public void givenMessage_WhenProper_ShouldReturnSad() {
+        MoodAnalyser moodanalyser=new MoodAnalyser();
+        String actualResult=moodanalyser.analyseMood("User is Sad");
+        Assert.assertEquals("Sad",actualResult);
     }
 }
