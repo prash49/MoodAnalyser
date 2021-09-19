@@ -4,35 +4,19 @@ package com.bridgelabz.moodanalyser;
  * Hello world!
  */
 public class MoodAnalyser {
-    public static String message;
 
-    public MoodAnalyser() {
-    }
-
-    public MoodAnalyser(String message) throws MoodAnalysisException {
-        this.message = message;
-        analyseMood();
-
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public static String analyseMood() throws MoodAnalysisException {
+    public static String analyseMood(String message) throws MoodAnalysisException {
         try {
-            if (message.toLowerCase().contains("sad")) {
-                return "Sad";
-            } else {
-                return "Happy";
+            if (message.length() == 0) {
+                throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.EMPTY, "Empty mood");
             }
-        } catch (NullPointerException e) {
-            throw new MoodAnalysisException("Null Mood");
+            if (message.toLowerCase().contains("sad")) {
+                return "sad";
+            } else {
+                return "happy";
+            }
+        } catch (NullPointerException exception) {
+            throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.NULL, "Invalid mood");
         }
-
     }
 }

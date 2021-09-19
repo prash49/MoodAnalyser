@@ -12,10 +12,9 @@ public class MoodAnalyserTest {
     @Test
     public void givenMessage_WhenProper_ShouldReturnSad() throws MoodAnalysisException {
         MoodAnalyser moodanalyser = new MoodAnalyser();
-        moodanalyser.setMessage("I am in Sad Mood");
         try {
-            String actualResult = moodanalyser.analyseMood();
-            Assert.assertEquals("Sad", actualResult);
+            String actualResult = moodanalyser.analyseMood("I am in Sad Mood");
+            Assert.assertEquals("sad", actualResult);
         } catch (MoodAnalysisException e) {
             e.printStackTrace();
         }
@@ -24,24 +23,24 @@ public class MoodAnalyserTest {
     @Test
     public void givenMessage_WhenProper_ShouldReturnHappy() throws MoodAnalysisException {
         MoodAnalyser moodanalyser = new MoodAnalyser();
-        moodanalyser.setMessage("I am in happy Mood");
         try {
-            String actualResult = moodanalyser.analyseMood();
-            Assert.assertEquals("Happy", actualResult);
+            String actualResult = moodanalyser.analyseMood("I am in Any Mood");
+            Assert.assertEquals("happy", actualResult);
         } catch (MoodAnalysisException e) {
             e.printStackTrace();
         }
     }
 
+
     @Test
-    public void givenMessage_Null_ShouldReturnMessage() throws MoodAnalysisException {
+    public void givenMessage_EmptyString_ShouldReturnMessage() {
         MoodAnalyser moodanalyser = new MoodAnalyser();
-        moodanalyser.setMessage(null);
         try {
-            String actualResult = moodanalyser.analyseMood();
-            Assert.assertEquals("Null Mood ", actualResult);
+            String actualResult = moodanalyser.analyseMood(null);
+            Assert.assertEquals("Empty mood", actualResult);
         } catch (MoodAnalysisException e) {
             e.printStackTrace();
+            e.getMessage();
         }
     }
 }
